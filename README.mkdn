@@ -119,6 +119,8 @@ Useful for running custom functions in server side that requires full VM access.
 
 Deletes a spreadsheet's content after N seconds of inactivity. Activities include accessing with REST API as well as Web UI, including moving the active cell cursor on an opened page.
 
+Setting `--expire -1` has the effect of requiring a Redis connection, instead of falling back to the `dump.json` storage.
+
 # Licensing
 
 ### Common Public Attribution License (Socialtext Inc.)
