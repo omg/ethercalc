@@ -53,7 +53,7 @@
     console.log "==> Falling back to JSON storage: #{ dataDir }/dump.json"
     if EXPIRE
       console.log "==> The --expire <seconds> option requires a Redis server; stopping!"
-      process.exit!
+      process.exit 1
 
     fs = require \fs
     db.DB = {}
