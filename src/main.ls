@@ -1,4 +1,9 @@
 @include = ->
+  HTTPAUTH = @HTTPAUTH
+  if HTTPAUTH
+    auth = require \http-auth
+    @use auth.connect auth[HTTPAUTH.type] HTTPAUTH{realm, file}
+
   @use \json, @app.router, @express.static __dirname
   @app.use \/edit @express.static __dirname
   @app.use \/view @express.static __dirname

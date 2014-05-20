@@ -2,7 +2,15 @@
 (function(){
   var join$ = [].join;
   this.include = function(){
-    var DB, SC, KEY, BASEPATH, EXPIRE, HMAC_CACHE, hmac, ref$, Text, Html, Csv, Json, RealBin, sendFile, newRoom, IO, api, ExportCSV, ExportHTML, requestToCommand, requestToSave;
+    var HTTPAUTH, auth, DB, SC, KEY, BASEPATH, EXPIRE, HMAC_CACHE, hmac, ref$, Text, Html, Csv, Json, RealBin, sendFile, newRoom, IO, api, ExportCSV, ExportHTML, requestToCommand, requestToSave;
+    HTTPAUTH = this.HTTPAUTH;
+    if (HTTPAUTH) {
+      auth = require('http-auth');
+      this.use(auth.connect(auth[HTTPAUTH.type]({
+        realm: HTTPAUTH.realm,
+        file: HTTPAUTH.file
+      })));
+    }
     this.use('json', this.app.router, this.express['static'](__dirname));
     this.app.use('/edit', this.express['static'](__dirname));
     this.app.use('/view', this.express['static'](__dirname));
