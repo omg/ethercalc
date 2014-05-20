@@ -13,6 +13,7 @@ dependencies:
   zappajs: \0.4.x
   cors: \*
   LiveScript: \1.2.x
+  http-auth: \2.1.x
 optionalDependencies:
   'webworker-threads': \0.4.x
 directories:
